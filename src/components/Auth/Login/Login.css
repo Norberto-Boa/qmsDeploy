@@ -6,28 +6,33 @@
     align-items: center;
     left: -3%;
 }
-.login-heading > p{
+
+.login-heading>p {
     font-family: 'Source Sans Pro';
     color: #192839;
     font-size: 5em;
-    font-weight: 900; 
+    font-weight: 900;
 }
-.login-heading > p > span{
+
+.login-heading>p>span {
     color: #41D3BD;
 }
-.signup-head{
+
+.signup-head {
     position: absolute;
     top: 108%;
     left: 31.5%;
     font-family: 'Source Sans Pro';
     font-size: 1.3em;
 }
-.signup-head > span{
+
+.signup-head>span {
     cursor: pointer;
     color: #41D3BD;
     text-decoration: underline;
 }
-.radio-button{
+
+.radio-button {
     display: flex;
     justify-content: space-between;
     width: 20vw;
@@ -35,32 +40,40 @@
     top: 18%;
     left: 29%;
 }
-#field-store,#field-customer{
+
+#field-store,
+#field-customer {
     position: relative;
     left: -5%;
     cursor: pointer;
 }
-.label-data{
+
+.label-data {
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     color: #2b4057f3;
     font-size: 1.4em;
 }
-.emails, .passwords {
+
+.emails,
+.passwords {
     position: absolute;
     top: 30%;
     left: 28%;
 }
+
 .passwords {
     top: 54%;
 }
-.forgot{
+
+.forgot {
     position: absolute;
     top: 78%;
     left: 29%;
 }
-.forgot > u{
+
+.forgot>u {
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
