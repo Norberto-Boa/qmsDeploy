@@ -12,6 +12,8 @@ const SignUp = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
+
+    const [userAlreadyExists, setUserAlreadyExists] = useState(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const onSubmit = (data, e) => {
@@ -30,8 +32,8 @@ const SignUp = () => {
                 navigate("/otp");
             }).catch((error) => {
                 dispatch(UnsetLoader())
+                setUserAlreadyExists(error.response.data.message);
                 console.log(error);
-                navigate("/login");
             })
     }
     const [toggle, setToggle] = useState(false);
@@ -78,6 +80,7 @@ const SignUp = () => {
                     </div>
                     <button className='signup-btn' type='submit'>Sign Up Now</button>
                     <p className='login-head'>Existing users <u onClick={handleClicked}>Login</u></p>
+                    <span className='alerts'>{userAlreadyExists}</span>
 
                 </form>
             </div>

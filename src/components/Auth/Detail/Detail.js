@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import photo1 from '../../Assets/customer.svg'
 import photo2 from '../../Assets/store.svg'
 import photo3 from '../../Assets/user.svg'
-import {useSelector,useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import * as actionCreators from '../../../redux/actions/AuthAction'
 import { useNavigate } from 'react-router-dom'
 import AuthService from '../../../services/API'
@@ -16,7 +16,7 @@ const Details = () => {
     });
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {pass} = useSelector((state)=>state.AuthReducer);    
+    const { pass } = useSelector((state) => state.AuthReducer);
     const [role, setRole] = useState(null);
     const onSubmit = (data, e) => {
         dispatch(setLoader())
@@ -25,34 +25,34 @@ const Details = () => {
         dispatch(actionCreators.userMobile(data.mobile));
         dispatch(actionCreators.userGender(data.aopt));
         dispatch(actionCreators.userType(data.role));
-        localStorage.setItem("Type",role);
-        if(role!==null){
+        localStorage.setItem("Type", role);
+        if (role !== null) {
             dispatch(actionCreators.userName(data.fullname));
             dispatch(actionCreators.userMobile(data.mobile));
             dispatch(actionCreators.userGender(data.aopt));
             dispatch(actionCreators.userType(data.role));
-            localStorage.setItem("Type",role);
+            localStorage.setItem("Type", role);
             let obj = {
-                "email":localStorage.getItem("email"),
-                "password":pass,
-                "fullname":data.fullname,
-                "mobileno":data.mobile, 
-                "gender":data.aopt,
-                "role":role==="store" ? false : true
+                "email": localStorage.getItem("email"),
+                "password": pass,
+                "fullname": data.fullname,
+                "mobileno": data.mobile,
+                "gender": data.aopt,
+                "role": role === "store" ? false : true
             }
             console.log(obj);
             //after submit if role is store then navigate to another form else it navigate to home page 
             AuthService.Details(obj)
-            .then((res)=>{
-                dispatch(UnsetLoader())
-                console.log(res);
-                localStorage.setItem("userid",res.data._id);
-                !obj.role?navigate("/create-store"):navigate("/")
-            }).catch((e)=>{
-                dispatch(UnsetLoader())
-                console.log(e);
-            })
-        }else{
+                .then((res) => {
+                    dispatch(UnsetLoader())
+                    console.log(res);
+                    localStorage.setItem("userid", res.data._id);
+                    !obj.role ? navigate("/create-store") : navigate("/")
+                }).catch((e) => {
+                    dispatch(UnsetLoader())
+                    console.log(e);
+                })
+        } else {
             alert("Choose Your Role");
         }
     }
@@ -130,7 +130,7 @@ const Details = () => {
                             <p className='alerts'>{errors.fullname?.message}</p>
                         </div>
                         <div className='mobile'>
-                            <input className='input-field2' type="text" placeholder='Mobile Number' name="mobile" {...register("mobile", { required: "mobile number is required", pattern: { value: /^[6789][0-9]{9}$/i, message: "This is not a valid mobile number" } })}></input>
+                            <input className='input-field2' type="text" placeholder='Mobile Number' name="mobile" {...register("mobile", { required: "mobile number is required", pattern: { value: /^[0-9]{9}$/i, message: "This is not a valid mobile number" } })}></input>
                             <p className='alerts'>{errors.mobile?.message}</p>
                         </div>
                     </div>
