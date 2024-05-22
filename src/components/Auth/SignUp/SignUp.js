@@ -51,37 +51,32 @@ const SignUp = () => {
                 <div className='Main-heading'>
                     <p>Hate Never Ending Queues <span className='ques'>?</span></p>
                 </div>
-                <form className='input-login' onSubmit={handleSubmit(onSubmit)}>
-                    <div className='form-container'>
-                        <div className='email'>
-                            <input className='input-field' type="email" placeholder='Enter Email Address' name="email" {...register("email", { required: "Email is required", pattern: { value: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i, message: "This is not a valid email" } })}></input>
-                            <p className='alerts'>{errors.email?.message}</p>
-                        </div>
+                <form className='flex flex-col space-y-4' onSubmit={handleSubmit(onSubmit)}>
+                    <div className='flex flex-col'>
+                        <input className='border border-gray-300 rounded-md p-2' type="email" placeholder='Enter Email Address' name="email" {...register("email", { required: "Email is required", pattern: { value: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i, message: "This is not a valid email" } })} />
+                        <p className='text-red-500'>{errors.email?.message}</p>
                     </div>
-                    <div className='form-container'>
-                        <div className='password'>
-                            <i id="passlock" class="fa fa-eye" aria-hidden="true"></i>
-                            {
-                                toggle ? <i id='passlock' class="fa fa-eye-slash" aria-hidden="true" onClick={() => { setToggle(!toggle) }}></i> : <i id="passlock" class="fa fa-eye" aria-hidden="true" onClick={() => { setToggle(!toggle) }}></i>
-                            }
-                            <input className='input-field' type={toggle ? "text" : "password"} placeholder='Enter New Password' name="password" {...register("password", { required: "password is required", minLength: { value: 8, message: "Password must be more than 8 characters" }, maxLength: { value: 14, message: "Password cannot exceed more than 14 characters" } })}></input>
-                            <p className='alerts'>{errors.password?.message}</p>
+                    <div className='flex flex-col'>
+                        <div className='relative'>
+                            <input className='border border-gray-300 rounded-md p-2 pr-10' type={toggle ? "text" : "password"} placeholder='Enter New Password' name="password" {...register("password", { required: "password is required", minLength: { value: 8, message: "Password must be more than 8 characters" }, maxLength: { value: 14, message: "Password cannot exceed more than 14 characters" } })} />
+                            <span className='absolute inset-y-0 right-0 flex items-center pr-2'>
+                                {toggle ? <i className="fa fa-eye-slash" aria-hidden="true" onClick={() => { setToggle(!toggle) }}></i> : <i className="fa fa-eye" aria-hidden="true" onClick={() => { setToggle(!toggle) }}></i>}
+                            </span>
                         </div>
+                        <p className='text-red-500'>{errors.password?.message}</p>
                     </div>
-                    <div className='form-container'>
-                        <div className='cpassword'>
-                            <i id="passlock" class="fa fa-eye" aria-hidden="true"></i>
-                            {
-                                toggle1 ? <i id='passlock' class="fa fa-eye-slash" aria-hidden="true" onClick={() => { setToggle1(!toggle1) }}></i> : <i id="passlock" class="fa fa-eye" aria-hidden="true" onClick={() => { setToggle1(!toggle1) }}></i>
-                            }
-                            <input className='input-field' type={toggle1 ? "text" : "password"} placeholder='Renter New Password' name="cpassword" {...register("cpassword", { required: "password is required", minLength: { value: 8, message: "Password must be more than 8 characters" }, maxLength: { value: 14, message: "Password cannot exceed more than 14 characters" } })}></input>
-                            <p className='alerts'>{errors.cpassword?.message}</p>
+                    <div className='flex flex-col'>
+                        <div className='relative'>
+                            <input className='border border-gray-300 rounded-md p-2 pr-10' type={toggle1 ? "text" : "password"} placeholder='Re-enter New Password' name="cpassword" {...register("cpassword", { required: "password is required", minLength: { value: 8, message: "Password must be more than 8 characters" }, maxLength: { value: 14, message: "Password cannot exceed more than 14 characters" } })} />
+                            <span className='absolute inset-y-0 right-0 flex items-center pr-2'>
+                                {toggle1 ? <i className="fa fa-eye-slash" aria-hidden="true" onClick={() => { setToggle1(!toggle1) }}></i> : <i className="fa fa-eye" aria-hidden="true" onClick={() => { setToggle1(!toggle1) }}></i>}
+                            </span>
                         </div>
+                        <p className='text-red-500'>{errors.cpassword?.message}</p>
                     </div>
-                    <button className='signup-btn' type='submit'>Sign Up Now</button>
-                    <p className='login-head'>Existing users <u onClick={handleClicked}>Login</u></p>
-                    <span className='alerts'>{userAlreadyExists}</span>
-
+                    <button className='bg-blue-500 text-white rounded-md py-2' type='submit'>Sign Up Now</button>
+                    <p className='text-center'>Existing users <u className='text-blue-500 cursor-pointer' onClick={handleClicked}>Login</u></p>
+                    <span className='text-red-500'>{userAlreadyExists}</span>
                 </form>
             </div>
             <div className='queue-img'>
