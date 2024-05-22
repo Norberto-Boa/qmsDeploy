@@ -7,6 +7,7 @@ import './Login.css'
 import AuthService from '../../../services/API'
 import { useDispatch } from 'react-redux'
 import { setLoader, UnsetLoader } from '../../../redux/actions/LoaderActions'
+import { checkStore } from '../../../redux/actions/LayoutAction'
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
@@ -27,7 +28,6 @@ const Login = () => {
             .then((res) => {
                 dispatch(UnsetLoader())
 
-                console.log(res);
                 if (res) {
                     localStorage.setItem("access", res.data.access_token);
                     localStorage.setItem("access", res.data.refresh_token);
@@ -35,12 +35,18 @@ const Login = () => {
 
                     // navigate("/");
                     // console.log(obj);
-                    !obj.isStore ? navigate("/create-store") : navigate("/")
+
+                    if (!obj.isStore) {
+                        dispatch(checkStore())
+                            .then((res) => {
+                                navigate(`/store/${res.data._id}`);
+                            })
+                    }
+                    navigate("/")
                 }
             }).catch((e) => {
                 dispatch(UnsetLoader())
                 setAuthError(e.response.data.message)
-                console.log(e);
             })
     }
     const handleClick = () => {
