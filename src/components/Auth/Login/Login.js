@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../../Layout/Navbar/Navbar'
 import { useForm } from 'react-hook-form'
 import image from '../../Assets/pic.svg'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './Login.css'
 import AuthService from '../../../services/API'
 import { useDispatch } from 'react-redux'
@@ -17,34 +17,34 @@ const Login = () => {
         dispatch(setLoader())
         e.preventDefault();
         let obj = {
-            "email":data.email,
-            "password":data.password,
+            "email": data.email,
+            "password": data.password,
             "isStore": data.aopt === "store" ? false : true
         }
         AuthService.Login(obj)
-        .then((res)=>{
-            dispatch(UnsetLoader())
+            .then((res) => {
+                dispatch(UnsetLoader())
 
-            console.log(res);
-            if(res){
-                localStorage.setItem("access",res.data.access_token);
-                localStorage.setItem("access",res.data.refresh_token);
-                localStorage.setItem("userid",res.data._id);
+                console.log(res);
+                if (res) {
+                    localStorage.setItem("access", res.data.access_token);
+                    localStorage.setItem("access", res.data.refresh_token);
+                    localStorage.setItem("userid", res.data._id);
 
-                // navigate("/");
-                // console.log(obj);
-                !obj.isStore?navigate("/create-store"):navigate("/")
-            }
-        }).catch((e)=>{
-            dispatch(UnsetLoader())
+                    // navigate("/");
+                    // console.log(obj);
+                    !obj.isStore ? navigate("/create-store") : navigate("/")
+                }
+            }).catch((e) => {
+                dispatch(UnsetLoader())
 
-            console.log(e);
-        })
+                console.log(e);
+            })
     }
-    const handleClick = () =>{
+    const handleClick = () => {
         navigate("/forgot");
     }
-    const handleClicked = () =>{
+    const handleClicked = () => {
         navigate("/signup");
     }
     const [toggle, setToggle] = useState(false);
@@ -88,7 +88,7 @@ const Login = () => {
                     </div>
                     <div className='form-container'>
                         <div className='emails'>
-                            <input className='input-field' type="email" placeholder='Enter Email Address' name="email" {...register("email", { required: "Email is required", pattern: { value: /^[a-zA-Z0-9_\-]{4,}[@][a-z]{3,}[\.][a-z]{1,3}$/i, message: "This is not a valid email" } })}></input>
+                            <input className='input-field' type="email" placeholder='Enter Email Address' name="email" {...register("email", { required: "Email is required", pattern: { value: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i, message: "This is not a valid email" } })}></input>
                             <p className='alerts'>{errors.email?.message}</p>
                         </div>
                     </div>

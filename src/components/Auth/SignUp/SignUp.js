@@ -20,17 +20,17 @@ const SignUp = () => {
         dispatch(actionCreators.userEmail(data.email));
         dispatch(actionCreators.userPass(data.password));
         localStorage.setItem("email", data.email);
-        let obj={
+        let obj = {
             "email": data.email,
         }
         AuthService.Signup(obj)
-        .then((res)=>{
-            dispatch(UnsetLoader())
-            console.log(res);
-        }).catch((error)=>{
-            dispatch(UnsetLoader())
-            console.log(error);
-        })
+            .then((res) => {
+                dispatch(UnsetLoader())
+                console.log(res);
+            }).catch((error) => {
+                dispatch(UnsetLoader())
+                console.log(error);
+            })
         navigate("/otp");
     }
     const [toggle, setToggle] = useState(false);
@@ -51,7 +51,7 @@ const SignUp = () => {
                 <form className='input-login' onSubmit={handleSubmit(onSubmit)}>
                     <div className='form-container'>
                         <div className='email'>
-                            <input className='input-field' type="email" placeholder='Enter Email Address' name="email" {...register("email", { required: "Email is required", pattern: { value: /^[a-zA-Z0-9_\-]{4,}[@][a-z]{3,}[\.][a-z]{1,3}$/i, message: "This is not a valid email" } })}></input>
+                            <input className='input-field' type="email" placeholder='Enter Email Address' name="email" {...register("email", { required: "Email is required", pattern: { value: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i, message: "This is not a valid email" } })}></input>
                             <p className='alerts'>{errors.email?.message}</p>
                         </div>
                     </div>
@@ -83,8 +83,8 @@ const SignUp = () => {
             <div className='queue-img'>
                 <img className="pic" src={image} alt="logo" />
             </div>
-            
-            </div>
-        </>)
+
+        </div>
+    </>)
 }
 export default SignUp
