@@ -27,11 +27,12 @@ const SignUp = () => {
             .then((res) => {
                 dispatch(UnsetLoader())
                 console.log(res);
+                navigate("/otp");
             }).catch((error) => {
                 dispatch(UnsetLoader())
                 console.log(error);
+                navigate("/login");
             })
-        navigate("/otp");
     }
     const [toggle, setToggle] = useState(false);
     const [toggle1, setToggle1] = useState(false);
