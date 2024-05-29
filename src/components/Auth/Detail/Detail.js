@@ -92,8 +92,8 @@ const Details = () => {
                     <div className='role'>
                         <p className='heading2'>Select your Role</p>
                     </div>
-                    <div className='images-role'>
-                        <div className='photo1'>
+                    <div className='flex gap-10 items-strecth'>
+                        <div className='flex flex-col justify-between items-center gap-6'>
                             <div className='photo1-img'>
                                 <img className="pic1" src={photo1} alt="logo" />
                             </div>
@@ -101,11 +101,18 @@ const Details = () => {
                                 Customer
                             </div>
                         </div>
-                        <div className='photo2'>
-                            <div className='photo2-img'>
+                        <div className='flex flex-col justify-between items-center gap-6'>
+                            <div className='photo1-img'>
                                 <img className="pic1" src={photo2} alt="logo" />
                             </div>
-                            <div className='photo2-role' onClick={() => setRole("store")}>
+
+                            <div
+
+                                className={role === "store" ? 'py-4 px-12 bg-emerald-400 rounded-full text-white font-bold'
+                                    :
+                                    'py-4 px-12 bg-slate-800 rounded-full text-white font-bold'}
+                                onClick={() => setRole("store")}
+                            >
                                 store
                             </div>
                         </div>

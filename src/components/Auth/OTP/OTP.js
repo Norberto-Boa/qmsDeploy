@@ -21,10 +21,11 @@ const Otp = () => {
         justifyContent: "space-around",
         alignItem: "center",
         position: "relative",
-        left: "-10%"
     }
     const handleClick = () => {
         setMinutes(1);
+        let mail = localStorage.getItem("email");
+        AuthService.resendotp(mail);
     }
     const navigate = useNavigate();
     useEffect(() => {
@@ -89,37 +90,41 @@ const Otp = () => {
             <div className='Navbar-Signup'>
                 <Navbar />
             </div>
-            <div className='middle-portion'>
-                {
+            <div className='flex container mx-auto justify-between items-center py-12'>
+                {/*
                     x === '1' ? <div className='login-heading'>
                         <p>Check your email <span className='ques'>.</span></p>
                     </div> : <div className='otp-heading'>
                         <p>Let us verify your email <span className='ques'>.</span></p>
                     </div>
-                }
+                */}
+                <div className='w-1/3'>
+                    <h2 className='text-7xl font-black'>Let us verify your email<span className='text-emerald-500'>!</span></h2>
+                </div>
 
-                <form className='input-login' onSubmit={(e) => handleSubmit(e)}>
-                    <p className='Enter-otp'>Enter OTP</p>
-                    <div className='otp-input'>
-                        <OtpInput
-                            value={state}
-                            onChange={handleChange}
-                            numInputs={4}
-                            hasErrored={flag}
-                            errorStyle={{ border: "3px solid red", borderRadius: "15px" }}
-                            containerStyle={style}
-                            inputStyle={{ width: "5vw", height: "10vh", border: "3px solid black", borderRadius: "15px", fontFamily: "Source Sans Pro", fontWeight: "900", fontSize: "3em", color: "#304D6D" }}
-                        />
-                    </div>
-                    <button className='otp-verify' type='submit'>Verify</button>
-                    <p className='otp-head'>Didn't receive
-                        {
+                <div>
+                    <form className='' onSubmit={(e) => handleSubmit(e)}>
+                        <p className='text-2xl text-white font-bold text-center mb-4 p-4 bg-blue-500 rounded'>Enter OTP</p>
+                        <div className=''>
+                            <OtpInput
+                                value={state}
+                                onChange={handleChange}
+                                numInputs={4}
+                                hasErrored={flag}
+                                errorStyle={{ border: "3px solid red", borderRadius: "15px" }}
+                                containerStyle={style}
+                                inputStyle={{ width: "5vw", height: "8vh", border: "3px solid black", borderRadius: "15px", fontFamily: "Source Sans Pro", fontWeight: "900", fontSize: "3em", color: "#304D6D" }}
+                            />
+                        </div>
+                        <button className='w-full bg-emerald-500 text-white py-2 rounded-md hover:bg-emerald-600 transition duration-200 font-bold' type='submit'>Verify</button>
+                        <p className='text-center'>Didn't receive! {
                             minutes === 0 && seconds === 0
-                                ? <u onClick={handleClick}>Resend OTP</u>
+                                ? <u onClick={handleClick} className='cursor-pointer'>Resend OTP</u>
                                 : <p className='timer'> {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</p>
                         }
-                    </p>
-                </form>
+                        </p>
+                    </form>
+                </div>
             </div>
             <div className='queue-img'>
                 <img className="pic" src={image} alt="logo" />
