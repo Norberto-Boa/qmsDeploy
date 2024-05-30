@@ -33,15 +33,15 @@ const Login = () => {
                     localStorage.setItem("access", res.data.refresh_token);
                     localStorage.setItem("userid", res.data._id);
 
-                    // navigate("/");
-                    // console.log(obj);
-
                     if (!obj.isStore) {
                         dispatch(checkStore())
                             .then((res) => {
+                                localStorage.setItem("user_shop", res.data._id);
                                 navigate(`/store/${res.data._id}`);
                             })
                     }
+
+                    localStorage.removeItem("user_shop");
                     navigate("/")
                 }
             }).catch((e) => {
