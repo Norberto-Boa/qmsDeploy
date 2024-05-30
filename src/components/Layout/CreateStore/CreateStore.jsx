@@ -105,9 +105,94 @@ const CreateStore = () => {
     return (
         <>
             <Navbar />
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-evenly" }}>
-                <div className={styles.box}>
-                    <h1>Edit Store Details</h1>
+            <div className="container justify-between items-center flex mx-auto">
+                <div className={"w-1/2 mt-8"}>
+                    <div className="space-y-6 max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
+                        <h1 className="text-3xl font-bold mb-4">Edit Store Details</h1>
+
+                        <div className="flex items-center space-x-3">
+                            <StoreMallDirectoryIcon className="text-3xl text-gray-700" />
+                            <input
+                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                placeholder="Store Name"
+                                value={strName}
+                                onChange={(e) => setStrName(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="w-full">
+                            <select
+                                className="w-full border-2 border-gray-700 rounded-lg px-4 py-3 text-gray-700 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                aria-label="Default select example"
+                            >
+                                <option selected>Store type</option>
+                                <option value="1">General store</option>
+                            </select>
+                        </div>
+
+                        <div className="flex items-center space-x-3">
+                            <img src={img1} alt="counters" className="w-10 h-10" />
+                            <input
+                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                placeholder="Number of counters"
+                                value={ctr}
+                                onChange={(e) => setCtr(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="flex items-center space-x-3 gap-4">
+                            <LocationOnIcon className="text-3xl text-gray-700" />
+                            <button
+                                className="bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:ring focus:ring-blue-200"
+                                onClick={getLocation}
+                            >
+                                Get coordinates
+                            </button>
+                            <p className="text-gray-600">{loc.lat}, {loc.long}</p>
+                        </div>
+
+
+
+                        <div className="flex items-center space-x-3">
+                            <img src={img2} alt="counters" className="w-10 h-10" />
+                            <input
+                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                placeholder="Billing Time"
+                                value={billTime}
+                                onChange={(e) => setBillTime(e.target.value)}
+                            />
+                        </div>
+
+                        <p className="text-sm text-gray-500 ml-3">Waiting time will be calculated automatically.</p>
+
+                        <div className="flex items-center space-x-3">
+                            <AccessTimeIcon className="text-3xl text-gray-700" />
+                            <input
+                                className="w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                placeholder="From"
+                                value={from}
+                                onChange={e => setFrom(e.target.value)}
+                            />
+                            <input
+                                className="w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                placeholder="To"
+                                value={to}
+                                onChange={(e) => setTo(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="flex items-start space-x-3">
+                            <InfoIcon className="text-3xl text-gray-700 mt-2" />
+                            <textarea
+                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                placeholder="About"
+                                value={about}
+                                onChange={(e) => setAbout(e.target.value)}
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    {/* <h1>Edit Store Details</h1>
                     <br />
                     <StoreMallDirectoryIcon style={{ position: "relative", top: "10px" }} fontSize="large" /><input placeholder="Store Name" value={strName} onChange={(e) => { setStrName(e.target.value) }}></input>
                     <br />
@@ -126,8 +211,32 @@ const CreateStore = () => {
                     <AccessTimeIcon style={{ position: "relative", top: "10px" }} fontSize="large" /><input placeholder="From" style={{ width: "39%" }} value={from} onChange={e => setFrom(e.target.value)} ></input>
                     <input placeholder="To" style={{ width: "39%" }} value={to} onChange={(e) => { setTo(e.target.value) }}></input>
                     <br />
-                    <InfoIcon style={{ position: "relative", top: "-30px" }} fontSize="large" /><textarea placeholder="About" value={about} onChange={(e) => { setAbout(e.target.value) }}></textarea>
-                    <button className={homeStyles.enterButton} style={{ width: "50%", marginLeft: "15%", marginTop: "10px" }} onClick={() => funSub()}>
+                    <InfoIcon style={{ position: "relative", top: "-30px" }} fontSize="large" /><textarea placeholder="About" value={about} onChange={(e) => { setAbout(e.target.value) }}></textarea> */}
+
+                    <div className="flex space-x-4 mt-4">
+                        <button
+                            className={`flex-grow bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:ring focus:ring-blue-200`}
+                            onClick={() => funSub()}
+                        >
+                            {storeDetails.name ? "Update" : "Create"}
+                        </button>
+
+                        <button
+                            className={`flex-grow bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:ring focus:ring-blue-200`}
+                            onClick={() => navigate("/view-queue/id")}
+                        >
+                            View queue
+                        </button>
+                    </div>
+
+                    <button
+                        className={`w-full mt-2 bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:ring focus:ring-blue-200`}
+                        onClick={() => navigate("/chart")}
+                    >
+                        View Store Analytics
+                    </button>
+
+                    {/* <button className={homeStyles.enterButton} style={{ width: "50%", marginLeft: "15%", marginTop: "10px" }} onClick={() => funSub()}>
                         {storeDetails.name ? "Update" : "Create"}
                     </button>
                     <button className={homeStyles.enterButton} style={{ width: "50%", marginLeft: "15%", marginTop: "10px" }} onClick={() => navigate("/view-queue/id")}>
@@ -135,8 +244,10 @@ const CreateStore = () => {
                     </button>
                     <button className={homeStyles.enterButton} style={{ width: "50%", marginLeft: "15%", marginTop: "10px" }} onClick={() => navigate("/chart")}>
                         View Store Analytics
-                    </button>
+                    </button> */}
                 </div>
+
+
                 <div className={styles.box}>
                     <h1>Store Preview</h1>
                     <div className={styles.mobile}>
