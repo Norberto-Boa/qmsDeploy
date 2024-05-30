@@ -165,70 +165,7 @@ const StorePage = () => {
     <>
       <Navbar />
       <SearchBar />
-      {/* <h3>Get current location of Customer: <button type="submit" onClick={getLocation}>Try</button> </h3>
-      <div>{loc.lat},{loc.long}, {d} kms</div> */}
-      {/* <table className={styles.table}>
-        <tbody>
-          <tr>
-            <td className={styles.left}>
-              <h1 className={homeStyles.mainHead} style={{ margin: "0" }}>{Details.name ? Details.name : "Store Name"}</h1>
-              <table>
-                <tbody>
-                  <tr>
-                    <td style={{ padding: "10px" }}>
-                      <div>
-                        <img src={img1} alt="counters" className={homeStyles.icons} /><div className={homeStyles.roundNo}>{Details.counter}</div>
-                        <div style={{ textAlign: "center", width: "100%" }}>Counters</div>
-                      </div>
-                    </td>
-                    <td style={{ padding: "10px" }}>
-                      <div>
-                        <TimerIcon style={{ position: "relative", color: "#192839", fontSize: "38px", display: "inline-block", top: "6px" }} /><span className={homeStyles.yellowCapsule} style={{ margin: "0", position: "relative", bottom: "6px", padding: "2px 5px" }}>
-                          {arr[0] ? arr[0] : 0} min
-                        </span>
-                        <div style={{ textAlign: "center", width: "100%" }}>Waiting time</div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style={{ padding: "10px" }}>
-                      <div>
-                        <img src={img2} alt="counters" className={homeStyles.icons} /><div className={homeStyles.roundNo}>{Details.queue.length}</div>
-                        <div style={{ textAlign: "center", width: "100%" }}>Customers</div>
-                      </div>
-                    </td>
-                    <td style={{ padding: "10px" }}>
-                      <div>
-                        <img src={img3} alt="counters" className={homeStyles.icons} /><span className={homeStyles.yellowCapsule} style={{ margin: "0", position: "relative", bottom: "10px", padding: "2px 5px" }}>
-                          {bT} mins
-                        </span>
-                        <div style={{ textAlign: "center", width: "100%" }}>Billing time</div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <AccessTimeIcon fontSize='large' style={{ position: "relative", top: "10px" }} /> Open {Details.from ? Details.from : 9}.00AM-{Details.to ? Details.to : 6}.00PM
-              <div>
-
-                <br></br>
-                {inQueue ? <div>
-                  <h1>Counter alloted:{counter}</h1>
-                </div> : <></>}
-                <br></br>
-                <h1>Address</h1>
-                <p style={{ width: "90%" }}>{Details.Address ? Details.Address : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur feugiat ex sed gravida. Proin eu orci varius, dictum erat ac, ullamcorper arcu. Aliquam erat volutpat.Nam sagittis leo "} </p>
-              </div>
-            </td>
-
-
-            <td className={styles.right}>
-              <div className="map" dangerouslySetInnerHTML={{ __html: "<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.467007802244!2d77.49981541508355!3d28.675673582400844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf30885b1e2a5%3A0x9983675e24c6638b!2sAKGEC%3A%20Ajay%20Kumar%20Garg%20Engineering%20College%2C%20Ghaziabad!5e0!3m2!1sen!2sin!4v1652256701829!5m2!1sen!2sin' width='100%' height='400' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>" }} />
-            </td>
-          </tr>
-        </tbody>
-      </table> */}
-
+      
       <div className="flex flex-col lg:flex-row">
         <div className="flex-1 p-4">
           <h1 className="text-2xl font-bold mb-2">{Details.name ? Details.name : "Store Name"}</h1>
