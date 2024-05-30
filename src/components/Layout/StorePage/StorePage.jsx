@@ -167,7 +167,7 @@ const StorePage = () => {
       <SearchBar />
       {/* <h3>Get current location of Customer: <button type="submit" onClick={getLocation}>Try</button> </h3>
       <div>{loc.lat},{loc.long}, {d} kms</div> */}
-      <table className={styles.table}>
+      {/* <table className={styles.table}>
         <tbody>
           <tr>
             <td className={styles.left}>
@@ -227,14 +227,80 @@ const StorePage = () => {
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
 
-      {userShop === shop._id ?
-        null :
-        <button className={inQueue ? homeStyles.leaveButton : homeStyles.enterButton} style={{ width: "20%", marginLeft: "40%", marginTop: "10px" }} onClick={() => join()}>
-          {inQueue ? "Leave Queue" : "Join Queue"}
-        </button>
-      }
+      <div className="flex flex-col lg:flex-row">
+        <div className="flex-1 p-4">
+          <h1 className="text-2xl font-bold mb-2">{Details.name ? Details.name : "Store Name"}</h1>
+          <div className="flex flex-wrap">
+            <div className="p-4">
+              <div className="text-center">
+                <img src={img1} alt="counters" className={homeStyles.icons} />
+                <div className={homeStyles.roundNo}>{Details.counter}</div>
+                <div className="text-center w-full">Counters</div>
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="text-center">
+                <TimerIcon className="text-gray-900 text-4xl inline-block relative top-1.5" />
+                <span className={`${homeStyles.yellowCapsule} relative bottom-1.5 p-1`}>
+                  {arr[0] ? arr[0] : 0} min
+                </span>
+                <div className="text-center w-full">Waiting time</div>
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="text-center">
+                <img src={img2} alt="counters" className={homeStyles.icons} />
+                <div className={homeStyles.roundNo}>{Details.queue.length}</div>
+                <div className="text-center w-full">Customers</div>
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="text-center">
+                <img src={img3} alt="counters" className={homeStyles.icons} />
+                <span className={`${homeStyles.yellowCapsule} relative bottom-2.5 p-1`}>
+                  {bT} mins
+                </span>
+                <div className="text-center w-full">Billing time</div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 flex gap-2">
+            <AccessTimeIcon className="text-2xl" /> Open {Details.from ? Details.from : 9}.00AM-{Details.to ? Details.to : 6}.00PM
+          </div>
+          <div className="mt-4">
+            {inQueue && (
+              <div>
+                <h1 className="text-xl">Counter alloted: {counter}</h1>
+              </div>
+            )}
+            <h1 className="text-xl mt-4">Address</h1>
+            <p className="w-11/12">
+              {Details.Address ? Details.Address : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur feugiat ex sed gravida. Proin eu orci varius, dictum erat ac, ullamcorper arcu. Aliquam erat volutpat. Nam sagittis leo "}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex-1 p-4">
+          <div className="map" dangerouslySetInnerHTML={{ __html: "<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.467007802244!2d77.49981541508355!3d28.675673582400844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf30885b1e2a5%3A0x9983675e24c6638b!2sAKGEC%3A%20Ajay%20Kumar%20Garg%20Engineering%20College%2C%20Ghaziabad!5e0!3m2!1sen!2sin!4v1652256701829!5m2!1sen!2sin' width='100%' height='400' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>" }} />
+        </div>
+      </div>
+
+      <div className='flex mx-auto'>
+        {userShop === shop._id ?
+          <a
+            href={"/QueueManagement/create-store"}
+            className='bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200 text-center px-3 mx-auto'
+          >
+            Update Store
+          </a>
+          :
+          <button className={inQueue ? homeStyles.leaveButton : homeStyles.enterButton} style={{ width: "20%", marginLeft: "40%", marginTop: "10px" }} onClick={() => join()}>
+            {inQueue ? "Leave Queue" : "Join Queue"}
+          </button>
+        }
+      </div>
       <p style={{ textAlign: "center", fontSize: "14px" }}>Ensure to be physically near the store.</p>
     </>
   )
