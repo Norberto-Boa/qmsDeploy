@@ -192,26 +192,6 @@ const CreateStore = () => {
                         </div>
                     </div>
 
-                    {/* <h1>Edit Store Details</h1>
-                    <br />
-                    <StoreMallDirectoryIcon style={{ position: "relative", top: "10px" }} fontSize="large" /><input placeholder="Store Name" value={strName} onChange={(e) => { setStrName(e.target.value) }}></input>
-                    <br />
-                    <select class="form-select" aria-label="Default select example" style={{ width: "80%", marginLeft: "8%", borderColor: "#192839", borderWidth: "2px", padding: "6px 10px", borderRadius: "10px", fontSize: "16px" }}>
-                        <option selected>Store type</option>
-                        <option value="1">General store</option>
-                    </select>
-                    <br />
-                    <img src={img1} alt="counters" style={{ width: "7%", position: "relative", top: "10px" }}></img><input placeholder="Number of counters" value={ctr} onChange={(e) => { setCtr(e.target.value) }}></input>
-                    <br />
-                    <LocationOnIcon style={{ position: "relative", top: "10px" }} fontSize="large" /><button className={styles.coord} onClick={getLocation}>Get coordinates</button>
-                    <p>{loc.lat},{loc.long}</p>
-                    <br />
-                    <img src={img2} alt="counters" style={{ width: "7%", position: "relative", top: "10px" }}></img><input placeholder="Billing Time" value={billTime} onChange={(e) => { setBillTime(e.target.value) }}></input>
-                    <p style={{ fontSize: "14px", marginLeft: "10px", position: "relative", top: "-15px", color: "gray" }}>Waiting time will be calculated automatically.</p>
-                    <AccessTimeIcon style={{ position: "relative", top: "10px" }} fontSize="large" /><input placeholder="From" style={{ width: "39%" }} value={from} onChange={e => setFrom(e.target.value)} ></input>
-                    <input placeholder="To" style={{ width: "39%" }} value={to} onChange={(e) => { setTo(e.target.value) }}></input>
-                    <br />
-                    <InfoIcon style={{ position: "relative", top: "-30px" }} fontSize="large" /><textarea placeholder="About" value={about} onChange={(e) => { setAbout(e.target.value) }}></textarea> */}
 
                     <div className="flex space-x-4 mt-4">
                         <button
