@@ -17,14 +17,13 @@ const HomePage = () => {
     long: 0
   });
 
-  const navigate = useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     let user = localStorage.getItem("userid")
     console.log(user);
     if (user === null) {
-      console.log("here");
-      // navigate("/login")
+      navigate("/login")
     }
   }, [])
 
