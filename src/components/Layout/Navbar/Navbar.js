@@ -66,7 +66,7 @@ const Navbar = () => {
                                 </div> : null
                             }
                             <div className={`flex flex-1 items-center ${user ? "justify-center" : "justify-start"} sm:items-stretch sm:justify-start`}>
-                                <div className="flex flex-shrink-0 items-center">
+                                <div className="flex flex-shrink-0 items-center" onClick={logoClick}>
                                     <img
                                         className="h-8 w-auto"
                                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
@@ -95,13 +95,14 @@ const Navbar = () => {
                                 {user ? <button
                                     type="button"
                                     className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                    onClick={signingOut}
                                 >
                                     <span className="absolute -inset-1.5" />
                                     <span className="sr-only">Log Out</span>
                                     <ArrowLeftEndOnRectangleIcon className="h-6 w-6" aria-hidden="true" />
                                 </button>
                                     :
-                                    <a className=" rounded-md p-2 transition-all hover:bg-gray-900 text-gray-400 hover:text-white " href='https://anytech-webpage.vercel.app/'>www.anytechsols.com</a>
+                                    <a target="_blank" className=" rounded-md p-2 transition-all hover:bg-gray-900 text-gray-400 hover:text-white " href='https://anytech-webpage.vercel.app/'>www.anytechsols.com</a>
                                 }
 
 

@@ -94,7 +94,13 @@ const HomePage = () => {
         name={"Queues Joined"}
       />
       <div>
-        {queues.length === 0 ? <div className={styles.listElement}>Join some queues!!!</div> : <></>}
+        {queues.length === 0 ?
+          <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mb-4'>
+            <div className="px-2 py-2 border border-zinc-100 shadow-lg rounded-lg flex justify-between font-bold">Join some queues!!!</div>
+          </div>
+          :
+          <></>
+        }
         {state.map(x => {
           return <ListElement x={x} state={state} setState={setState} />
         })}
