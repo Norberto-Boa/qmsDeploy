@@ -16,11 +16,11 @@ const Otp = () => {
     const x = localStorage.getItem("forgot");
     const { email, pass } = useSelector((state) => state.AuthReducer);
     const style = {
-        width: "28vw",
-        height: "12vh",
-        justifyContent: "space-around",
+        gap: "2rem",
+        marginBottom: "1rem",
+        justifyContent: "space-between",
         alignItem: "center",
-        position: "relative",
+        display: "flex"
     }
     const handleClick = () => {
         setMinutes(1);
@@ -90,44 +90,46 @@ const Otp = () => {
             <div className='Navbar-Signup'>
                 <Navbar />
             </div>
-            <div className='flex container mx-auto justify-between items-center py-12'>
-                {/*
+            <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 mb-4 min-h-full flex-1 flex-col justify-center items-center flex'>
+                <div className='flex  mx-auto justify-center items-center'>
+                    {/*
                     x === '1' ? <div className='login-heading'>
                         <p>Check your email <span className='ques'>.</span></p>
                     </div> : <div className='otp-heading'>
                         <p>Let us verify your email <span className='ques'>.</span></p>
                     </div>
                 */}
-                <div className='w-1/3'>
-                    <h2 className='text-7xl font-black'>Let us verify your email<span className='text-emerald-500'>!</span></h2>
-                </div>
 
-                <div>
-                    <form className='' onSubmit={(e) => handleSubmit(e)}>
-                        <p className='text-2xl text-white font-bold text-center mb-4 p-4 bg-blue-500 rounded'>Enter OTP</p>
-                        <div className=''>
-                            <OtpInput
-                                value={state}
-                                onChange={handleChange}
-                                numInputs={4}
-                                hasErrored={flag}
-                                errorStyle={{ border: "3px solid red", borderRadius: "15px" }}
-                                containerStyle={style}
-                                inputStyle={{ width: "5vw", height: "8vh", border: "3px solid black", borderRadius: "15px", fontFamily: "Source Sans Pro", fontWeight: "900", fontSize: "3em", color: "#304D6D" }}
-                            />
-                        </div>
-                        <button className='w-full bg-emerald-500 text-white py-2 rounded-md hover:bg-emerald-600 transition duration-200 font-bold' type='submit'>Verify</button>
-                        <p className='text-center'>Didn't receive! {
-                            minutes === 0 && seconds === 0
-                                ? <u onClick={handleClick} className='cursor-pointer'>Resend OTP</u>
-                                : <p className='timer'> {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</p>
-                        }
-                        </p>
-                    </form>
+                    <div>
+                        <form className='' onSubmit={(e) => handleSubmit(e)}>
+                            <p className='text-2xl text-slate-800 font-bold text-center mb-2 p-4'>Enter OTP</p>
+                            <div className=''>
+                                <OtpInput
+                                    value={state}
+                                    onChange={handleChange}
+                                    numInputs={4}
+                                    hasErrored={flag}
+                                    errorStyle={{ border: "3px solid red", borderRadius: "15px" }}
+                                    containerStyle={style}
+                                    inputStyle={{ width: "3rem", height: "3rem", border: "2px solid black", borderRadius: "8px", fontFamily: "Source Sans Pro", fontWeight: "900", fontSize: "3em", color: "#304D6D" }}
+                                />
+                                <button className='w-full bg-emerald-500 text-white py-2 rounded-md hover:bg-emerald-600 transition duration-200 font-bold' type='submit'>Verify</button>
+                            </div>
+                            <p className="mt-2 text-center text-sm text-gray-500">
+                                Did not Receive the OTP?{' '}
+                                <a href="" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                                    Resend OTP
+                                </a>
+                            </p>
+                            {/* <p className='text-center'>Didn't receive! {
+                                minutes === 0 && seconds === 0
+                                    ? <u onClick={handleClick} className='cursor-pointer'>Resend OTP</u>
+                                    : <p className='timer'> {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</p>
+                            }
+                            </p> */}
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div className='queue-img'>
-                <img className="pic" src={image} alt="logo" />
             </div>
         </div>
     </>
