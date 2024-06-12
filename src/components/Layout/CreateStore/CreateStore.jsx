@@ -137,6 +137,7 @@ const CreateStore = () => {
                                 placeholder="Number of counters"
                                 value={ctr}
                                 onChange={(e) => setCtr(e.target.value)}
+                                type='number'
                             />
                         </div>
 
@@ -160,6 +161,7 @@ const CreateStore = () => {
                                 placeholder="Billing Time"
                                 value={billTime}
                                 onChange={(e) => setBillTime(e.target.value)}
+                                type='number'
                             />
                         </div>
 
@@ -229,8 +231,70 @@ const CreateStore = () => {
 
 
                 <div className={styles.box}>
-                    <h1>Store Preview</h1>
-                    <div className={styles.mobile}>
+                    <h1 className='text-center text-4xl font-bold mb-4 text-blue-500'>Store Preview</h1>
+
+                    <div className='border shadow px-4 py-4 space-y-4'>
+                        <div className='text-2xl font-bold '>
+                            {strName !== "" ? strName : "Store Name"}
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-2 justify-start items-center justify-items-center">
+                            <div>
+                                <img src={img1} alt="counters" className={homeStyles.icons} /><div className={"ml-1.25 text-xs inline-block bg-[#F9DB6D] w-6 h-6 p-1 rounded-full text-center font-semibold relative -top-2.5"}>{ctr ? ctr : "0"}</div>
+                                <div style={{ textAlign: "center", width: "100%" }}>Counters</div>
+                            </div>
+
+                            <div className='flex flex-col justify-between h-full pt-[1px]'>
+                                <div>
+                                    <TimerIcon style={{ position: "relative", color: "#192839", fontSize: "38px", display: "inline-block", top: "6px" }} />
+                                    <span className={homeStyles.yellowCapsule} style={{ margin: "0", position: "relative", bottom: "6px", padding: "2px 5px" }}>
+                                        Xhr XXmin
+                                    </span>
+                                </div>
+                                <div style={{ textAlign: "center", width: "100%" }}>Waiting time</div>
+                            </div>
+
+                            <div>
+                                <img src={img2} alt="counters" className="w-9 h-9 ml-2.5" />
+                                <div className={"ml-1.25 text-xs inline-block bg-[#F9DB6D] w-6 h-6 p-1 rounded-full text-center font-semibold relative -top-2.5"}>X</div>
+                                <div style={{ textAlign: "center", width: "100%" }}>Customers</div>
+                            </div>
+
+                            <div>
+                                <img src={img3} alt="counters" className="w-9 h-9 ml-2.5" />
+                                <span className={homeStyles.yellowCapsule} style={{ margin: "0", position: "relative", bottom: "4px", padding: "2px 5px" }}>
+                                    {billTime ? billTime : "0"} min
+                                </span>
+                                <div style={{ textAlign: "center", width: "100%" }}>Billing time</div>
+                            </div>
+                        </div>
+
+                        <div className='flex items-center gap-2'>
+                            <AccessTimeIcon fontSize='medium' style={{ position: "relative" }} /> <strong className='uppercase text-blue-800'>Open -</strong>{from ? from : "9"}.00AM -{to ? to : "6"}.00PM
+                        </div>
+
+                        <div className='flex gap-2 items-center mb-2'>
+                            <LocationOnIcon fontSize='medium' /> {loc.lat}, {loc.long}
+                        </div>
+
+                        <div>
+                            <h2 className='text-xl text-blue-600 font-bold'>About us</h2>
+                            <p className='text-base text-zinc-500'>{about ? about : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur neque, eligendi eum quod non aliquid. Voluptatem consequatur quia dolores sunt?"}</p>
+                        </div>
+
+                        <button className="bg-[#FF8898] rounded-lg py-1 px-3 w-full text-center mt-2 text-base font-bold uppercase transition-all duration-500 hover:bg-[#fa6f82]"                        >
+                            Close Store
+                        </button>
+                    </div>
+                    <button className="bg-[#41D3BD] rounded-lg py-1 px-3 w-full text-center mt-2 text-base font-bold uppercase transition-all duration-500 hover:bg-[#48efd6]"
+                        style={{}}
+                        onClick={() => navigate("/")}
+                    >
+                        Join A Queue
+                    </button>
+
+
+                    {/* <div className={styles.mobile}>
                         <table className={styles.table}>
                             <tbody>
                                 <tr>
@@ -241,7 +305,7 @@ const CreateStore = () => {
                                                 <tr>
                                                     <td style={{ padding: "10px" }}>
                                                         <div>
-                                                            <img src={img1} alt="counters" className={homeStyles.icons} /><div className={homeStyles.roundNo}>{ctr ? ctr : "0"}</div>
+                                                            <img src={img1} alt="counters" className={homeStyles.icons} /><div className={"ml-1.25 text-xs inline-block bg-[#F9DB6D] w-6 h-6 p-1 rounded-full text-center font-semibold relative -top-2.5"}>{ctr ? ctr : "0"}</div>
                                                             <div style={{ textAlign: "center", width: "100%" }}>Counters</div>
                                                         </div>
                                                     </td>
@@ -257,7 +321,7 @@ const CreateStore = () => {
                                                 <tr>
                                                     <td style={{ padding: "10px" }}>
                                                         <div>
-                                                            <img src={img2} alt="counters" className={homeStyles.icons} /><div className={homeStyles.roundNo}>X</div>
+                                                            <img src={img2} alt="counters" className={homeStyles.icons} /><div className={"ml-1.25 text-xs inline-block bg-[#F9DB6D] w-6 h-6 p-1 rounded-full text-center font-semibold relative -top-2.5"}>X</div>
                                                             <div style={{ textAlign: "center", width: "100%" }}>Customers</div>
                                                         </div>
                                                     </td>
@@ -288,12 +352,7 @@ const CreateStore = () => {
                             Join Queue
                         </button>
                         <p style={{ textAlign: "center", fontSize: "14px" }}>Ensure to be physically near the store.</p>
-                    </div>
-                    <button className={homeStyles.enterButton} style={{ width: "50%", marginLeft: "15%", marginTop: "10px", backgroundColor: "#FF8898", boxShadow: "0px 4px 15px #FF8898", borderColor: "#FF8898" }}>
-                        Close Store
-                    </button>
-                    <br />
-                    <br />
+                    </div> */}
 
                 </div>
 
