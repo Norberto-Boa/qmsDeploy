@@ -16,7 +16,7 @@ function classNames(...classes) {
 
 export default function Header({ name }) {
   return (
-    <div className="lg:flex lg:items-center lg:justify-between max-w-7xl mx-auto">
+    <div className="max-w-7xl px-2 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between  mx-auto py-4">
       <div className="min-w-0 flex-1">
 
         <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">

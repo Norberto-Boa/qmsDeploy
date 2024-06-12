@@ -81,21 +81,18 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
-      <SearchBar />
       <Header
         name={"Nearby Stores"}
       />
-      <h1 className={styles.mainHead}>Nearby Stores</h1>
-      <div className={styles.cards}>
+      <div className=" max-w-7xl px-2 sm:px-6 lg:px-8 justify-center mx-auto grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8">
         {nearby.length === 0 ? <button onClick={getLocation}>Show Nearby</button> : ""}
         {nearby.length !== 0 ? nearby.map(n => {
           return <Card n={n.shop} />
         }) : <></>}
       </div>
-      <br />
-      <br />
-      <h1 className={styles.mainHead}>Queues Joined</h1>
-      <br />
+      <Header
+        name={"Queues Joined"}
+      />
       <div>
         {queues.length === 0 ? <div className={styles.listElement}>Join some queues!!!</div> : <></>}
         {state.map(x => {

@@ -64,21 +64,21 @@ const Card = (props) => {
   return (
     <div className={styles.card}>
       <h1 className={styles.head}>{props.n.name}</h1>
-      <div style={{ display: "flex", width: "100%", justifyContent: "center", marginTop: "8px" }}>
-        <div>
+      <div className='flex w-full justify-center gap-8 mt-2'>
+        <div className='flex flex-col justify-center items-center'>
           <img src={img1} alt="counters" className={styles.icons} /><div className={styles.roundNo}>{props.n.counter}</div>
           <div style={{ textAlign: "center", width: "100%" }}>Counters</div>
         </div>
-        <div>
+        <div className='flex flex-col justify-center items-center'>
           <img src={img2} alt="counters" className={styles.icons} /><div className={styles.roundNo}>{props.n.queue.length}</div>
           <div style={{ textAlign: "center", width: "100%" }}>Customers</div>
         </div>
       </div>
-      <div style={{ textAlign: "center", marginTop: "8px" }}>
-        <LocationOnIcon fontSize='small' style={{ position: "relative", top: "4px", color: "#192839" }} /> Address of the store here...
+      <div className='flex gap-2 items-center justify-center mb-2'>
+        <LocationOnIcon fontSize='small' /> Address of the store here...
       </div>
-      <div style={{ textAlign: "center", marginTop: "4px", color: "#304D6D", fontSize: "12px" }}>
-        <TimerIcon fontSize='small' style={{ position: "relative", top: "6px", color: "#192839" }} /> Waiting Time
+      <div className='flex gap-2 items-center justify-center mb-2'>
+        <TimerIcon fontSize='small' /> Waiting Time
       </div>
       <div className={styles.yellowCapsule}>
         {/* {arr[0]} */}
