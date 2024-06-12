@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux/es/exports';
 import Loader from '../Loaders/GifLoader';
 import { setLoader, UnsetLoader } from '../../../redux/actions/LoaderActions';
 import { useNavigate } from 'react-router-dom';
+import Header from '../Header/Header';
 
 const HomePage = () => {
   const [loc, setLoc] = useState({
@@ -81,6 +82,9 @@ const HomePage = () => {
     <>
       <Navbar />
       <SearchBar />
+      <Header
+        name={"Nearby Stores"}
+      />
       <h1 className={styles.mainHead}>Nearby Stores</h1>
       <div className={styles.cards}>
         {nearby.length === 0 ? <button onClick={getLocation}>Show Nearby</button> : ""}
