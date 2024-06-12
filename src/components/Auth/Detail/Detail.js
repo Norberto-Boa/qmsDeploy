@@ -97,7 +97,10 @@ const Details = () => {
                             <div className='photo1-img'>
                                 <img className="pic1" src={photo1} alt="logo" />
                             </div>
-                            <div className='photo1-role' onClick={() => setRole("customer")}>
+                            <div className={role === "customer" ? 'py-4 px-12 bg-emerald-400 rounded-full text-white font-bold'
+                                :
+                                'py-4 px-12 bg-slate-800 rounded-full text-white font-bold cursor-pointer'}
+                                onClick={() => setRole("customer")}>
                                 Customer
                             </div>
                         </div>
@@ -107,13 +110,12 @@ const Details = () => {
                             </div>
 
                             <div
-
                                 className={role === "store" ? 'py-4 px-12 bg-emerald-400 rounded-full text-white font-bold'
                                     :
-                                    'py-4 px-12 bg-slate-800 rounded-full text-white font-bold'}
+                                    'py-4 px-12 bg-slate-800 rounded-full text-white font-bold cursor-pointer'}
                                 onClick={() => setRole("store")}
                             >
-                                store
+                                Store
                             </div>
                         </div>
                     </div>
