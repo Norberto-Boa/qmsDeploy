@@ -3,7 +3,7 @@ import Navbar from '../Navbar/Navbar';
 import styles from "./Homepage.module.css"
 import Card from './Card/Card';
 import ListElement from './ListElement';
-import SearchBar from '../SearchBar/SearchBar';
+import { SearchBar } from '../Header/SearchBar';
 import { useDispatch } from 'react-redux';
 import { allQueues, getNearby, getSingle } from '../../../redux/actions/LayoutAction';
 import { useSelector } from 'react-redux/es/exports';
@@ -17,6 +17,8 @@ const HomePage = () => {
     lat: 0,
     long: 0
   });
+
+  const [searchQuery, setSearchQuery] = useState('');
 
   const navigate = useNavigate();
 
@@ -57,6 +59,15 @@ const HomePage = () => {
       })
   }, [navigator.geolocation])
 
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredNearby = nearby.filter(n => {
+    // Replace this condition with your actual filtering logic
+    return n.shop.name.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+
   useEffect(() => {
     console.log("called");
     dispatch(setLoader())
@@ -84,11 +95,25 @@ const HomePage = () => {
       <Header
         name={"Nearby Stores"}
       />
+
+      <div className='max-w-7xl px-2 sm:px-6 lg:px-8 py-4 mx-auto'>
+        <input
+          type="text"
+          name="price"
+          id="price"
+          className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+      </div>
       <div className=" max-w-7xl px-2 sm:px-6 lg:px-8 justify-center mx-auto grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8">
-        {nearby.length === 0 ? <button onClick={getLocation}>Show Nearby</button> : ""}
-        {nearby.length !== 0 ? nearby.map(n => {
-          return <Card n={n.shop} />
-        }) : <></>}
+        {filteredNearby.length === 0 ?
+          (nearby.length === 0 ?
+            <button onClick={getLocation}>Show Nearby</button>
+            : <div>No results found.</div>)
+          : filteredNearby.map(n => <Card key={n.id} n={n.shop} />)
+        }
       </div>
       <Header
         name={"Queues Joined"}

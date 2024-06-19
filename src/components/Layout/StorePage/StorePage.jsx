@@ -165,7 +165,7 @@ const StorePage = () => {
     <>
       <Navbar />
       <SearchBar />
-      
+
       <div className="flex flex-col lg:flex-row">
         <div className="flex-1 p-4">
           <h1 className="text-2xl font-bold mb-2">{Details.name ? Details.name : "Store Name"}</h1>

@@ -12,14 +12,14 @@ import {
     MenuItems,
     Transition,
 } from '@headlessui/react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
+    { name: 'Dashboard', href: '/QueueManagement/', path: "/", current: true },
+    { name: 'MyStore', href: '/QueueManagement/create-store', path: "/create-store", current: false },
+    { name: 'Projects', href: '#', path: "", current: false },
+    { name: 'Calendar', href: '#', path: "", current: false },
 ]
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -29,6 +29,9 @@ function classNames(...classes) {
 
 const Navbar = () => {
     const [user, setUser] = useState();
+    const location = useLocation();
+
+    console.log(location.pathname)
 
     useEffect(() => {
         setUser(localStorage.getItem("userid"))
@@ -66,7 +69,7 @@ const Navbar = () => {
                                 </div> : null
                             }
                             <div className={`flex flex-1 items-center ${user ? "justify-center" : "justify-start"} sm:items-stretch sm:justify-start`}>
-                                <div className="flex flex-shrink-0 items-center" onClick={logoClick}>
+                                <div className="flex flex-shrink-0 items-center cursor-pointer" onClick={logoClick}>
                                     <img
                                         className="h-8 w-auto"
                                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
@@ -80,7 +83,7 @@ const Navbar = () => {
                                                 key={item.name}
                                                 href={item.href}
                                                 className={classNames(
-                                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                    location.pathname == item.path ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                                     'rounded-md px-3 py-2 text-sm font-medium'
                                                 )}
                                                 aria-current={item.current ? 'page' : undefined}
@@ -174,7 +177,7 @@ const Navbar = () => {
                                     as="a"
                                     href={item.href}
                                     className={classNames(
-                                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                        location.pathname == item.path ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                         'block rounded-md px-3 py-2 text-base font-medium'
                                     )}
                                     aria-current={item.current ? 'page' : undefined}
