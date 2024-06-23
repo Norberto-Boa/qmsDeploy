@@ -107,7 +107,7 @@ const HomePage = () => {
           onChange={handleSearchChange}
         />
       </div>
-      <div className=" max-w-7xl px-2 sm:px-6 lg:px-8 justify-center mx-auto grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8">
+      <div className=" max-w-7xl s px-2 sm:px-6 lg:px-8 justify-center mx-auto grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8">
         {filteredNearby.length === 0 ?
           (nearby.length === 0 ?
             <button onClick={getLocation}>Show Nearby</button>
