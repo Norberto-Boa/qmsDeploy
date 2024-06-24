@@ -85,7 +85,7 @@ const Navbar = () => {
                                                 href={item.href}
                                                 className={classNames(
                                                     location.pathname == item.path ? 'border border-white text-white !font-bold' : 'text-white hover:bg-blue-std-heavy hover:text-zinc-50',
-                                                    !shop ? 'cursor-not-allowed' : null,
+                                                    !shop && item.name == "MyStore" ? 'cursor-not-allowed pointer-events-none opacity-70' : null,
                                                     'rounded-md px-3 py-2 text-sm font-medium transition-all duration-150'
                                                 )}
                                                 aria-current={item.current ? 'page' : undefined}

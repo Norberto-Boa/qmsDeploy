@@ -139,7 +139,7 @@ const Login = () => {
                                     Password
                                 </label>
                                 <div className="text-sm">
-                                    <a href="" onClick={handleForgotPasswordClick} className="font-semibold text-blue-std hover:text-blue-std-heavy">
+                                    <a href="" onClick={handleForgotPasswordClick} className="font-semibold text-white hover:text-blue-std">
                                         Forgot password?
                                     </a>
                                 </div>
@@ -177,7 +177,7 @@ const Login = () => {
 
                     <p className="mt-10 text-center text-sm text-white">
                         Not a member?{' '}
-                        <a href="" onClick={handleSignUpClick} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                        <a href="" onClick={handleSignUpClick} className="font-semibold leading-6 text-blue-400 hover:text-blue-std">
                             Create an Account
                         </a>
                     </p>
