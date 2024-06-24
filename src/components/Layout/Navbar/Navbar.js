@@ -1,5 +1,5 @@
 import React from 'react'
-import illustrate from '../../Assets/logo1.svg'
+import logo from '../../Assets/logo1.svg'
 import './Navbar.css';
 import { Bars3Icon, BellIcon, XMarkIcon, ArrowLeftEndOnRectangleIcon } from '@heroicons/react/24/outline'
 import {
@@ -49,7 +49,7 @@ const Navbar = () => {
         navigate("/");
     }
     return (
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-gray-200">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -72,7 +72,7 @@ const Navbar = () => {
                                 <div className="flex flex-shrink-0 items-center cursor-pointer" onClick={logoClick}>
                                     <img
                                         className="h-8 w-auto"
-                                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                                        src={logo}
                                         alt="Your Company"
                                     />
                                 </div>

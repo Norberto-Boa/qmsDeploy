@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import './SignUp.css'
-import Navbar from '../../Layout/Navbar/Navbar'
+import logo from '../../Assets/logo.png'
 import { useForm } from 'react-hook-form'
-import image from '../../Assets/pic.svg'
 import { useSelector, useDispatch } from 'react-redux'
 import * as actionCreators from '../../../redux/actions/AuthAction'
 import { useNavigate } from 'react-router-dom'
 import AuthService from '../../../services/API'
 import { setLoader, UnsetLoader } from '../../../redux/actions/LoaderActions'
+import { AuthBg } from '../auth-bg/Auth-bg'
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
@@ -42,19 +42,19 @@ const SignUp = () => {
         navigate("/login");
     }
     return (<>
-        <div className='Signup-Page'>
-            <div className='Navbar-Signup'>
+        <div className=''>
+            {/* <div className='Navbar-Signup'>
                 <Navbar />
-            </div>
+            </div> */}
 
             <div className="flex min-h-[90vh] flex-1 flex-col justify-center px-6 py-6 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
-                        className="mx-auto h-10 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                        className="mx-auto h-20 w-auto"
+                        src={logo}
                         alt="Your Company"
                     />
-                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                    <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-white">
                         Create a new account
                     </h2>
                 </div>
@@ -66,7 +66,7 @@ const SignUp = () => {
 
                         {/* Email Address */}
                         <div>
-                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
                                 Email address
                             </label>
                             <div className="mt-2">
@@ -91,7 +91,7 @@ const SignUp = () => {
                         {/*Password */}
                         <div>
                             <div className="flex items-center justify-between">
-                                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                                <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
                                     Password
                                 </label>
                             </div>
@@ -116,7 +116,7 @@ const SignUp = () => {
                         {/*Confirm Password */}
                         <div>
                             <div className="flex items-center justify-between">
-                                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                                <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
                                     Confirm Password
                                 </label>
                             </div>
@@ -150,7 +150,7 @@ const SignUp = () => {
                         </div>
                     </form>
 
-                    <p className="mt-10 text-center text-sm text-gray-500">
+                    <p className="mt-10 text-center text-sm text-white">
                         Already have an Account{' '}
                         <a href="" onClick={handleClicked} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                             Sign In
@@ -159,6 +159,7 @@ const SignUp = () => {
                 </div>
             </div>
 
+            <AuthBg />
         </div>
     </>)
 }

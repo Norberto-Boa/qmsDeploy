@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import logo from '../../Assets/logo.png'
+import bg from '../../Assets/bg-1.webp';
 import Navbar from '../../Layout/Navbar/Navbar'
 import { useForm } from 'react-hook-form'
 import image from '../../Assets/pic.svg'
@@ -8,6 +10,7 @@ import AuthService from '../../../services/API'
 import { useDispatch } from 'react-redux'
 import { setLoader, UnsetLoader } from '../../../redux/actions/LoaderActions'
 import { checkStore } from '../../../redux/actions/LayoutAction'
+import { AuthBg } from '../auth-bg/Auth-bg';
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
@@ -57,18 +60,18 @@ const Login = () => {
     }
     const [toggle, setToggle] = useState(false);
     return (
-        <div className='Signup-Page'>
-            <div className='Navbar-Signup'>
+        <div className="relative">
+            {/* <div className='Navbar-Signup'>
                 <Navbar />
-            </div>
-            <div className="flex min-h-[90vh] flex-1 flex-col justify-center px-6 py-6 lg:px-8 overflow-scroll">
+            </div> */}
+            <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-6 lg:px-8 z-10">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
-                        className="mx-auto h-10 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                        className="mx-auto h-20 w-auto"
+                        src={logo}
                         alt="Your Company"
                     />
-                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                    <h2 className="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-white">
                         Sign in to your account
                     </h2>
                 </div>
@@ -77,7 +80,7 @@ const Login = () => {
                     <form className="space-y-6" method="POST" onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-6">
                             <div className="flex items-center mb-4 justify-center">
-                                <label className="flex items-center text-gray-700 mr-4">
+                                <label className="flex items-center text-white mr-4">
                                     <input
                                         {...register("aopt", { required: "This field is required" })}
                                         type="radio"
@@ -89,7 +92,7 @@ const Login = () => {
                                     />
                                     Customer
                                 </label>
-                                <label className="flex items-center text-gray-700">
+                                <label className="flex items-center text-white">
                                     <input
                                         {...register("aopt", { required: "This field is required" })}
                                         type="radio"
@@ -107,7 +110,7 @@ const Login = () => {
 
                         {/* Email Address */}
                         <div>
-                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
                                 Email address
                             </label>
                             <div className="mt-2">
@@ -116,7 +119,7 @@ const Login = () => {
                                     name="email"
                                     type="email"
                                     required
-                                    className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 px-2 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     {...register("email", {
                                         required: "Email is required",
                                         pattern: {
@@ -131,11 +134,11 @@ const Login = () => {
 
                         <div>
                             <div className="flex items-center justify-between">
-                                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                                <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
                                     Password
                                 </label>
                                 <div className="text-sm">
-                                    <a href="" onClick={handleForgotPasswordClick} className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                    <a href="" onClick={handleForgotPasswordClick} className="font-semibold text-blue-std hover:text-blue-std-heavy">
                                         Forgot password?
                                     </a>
                                 </div>
@@ -147,7 +150,7 @@ const Login = () => {
                                     type="password"
                                     autoComplete="current-password"
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 py-1.5 px-2 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     {...register("password", {
                                         required: "Password is required",
                                         minLength: { value: 8, message: "Password must be more than 8 characters" },
@@ -161,7 +164,7 @@ const Login = () => {
                         <div>
                             <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className="flex w-full justify-center rounded-md bg-blue-std px-3 py-1.5 text-sm font-semibold leading-6 transition-all duration-300 text-white shadow-sm hover:bg-blue-std-heavy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Sign in
                             </button>
@@ -170,7 +173,7 @@ const Login = () => {
                         </div>
                     </form>
 
-                    <p className="mt-10 text-center text-sm text-gray-500">
+                    <p className="mt-10 text-center text-sm text-white">
                         Not a member?{' '}
                         <a href="" onClick={handleSignUpClick} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                             Create an Account
@@ -178,6 +181,8 @@ const Login = () => {
                     </p>
                 </div>
             </div>
+
+            <AuthBg />
         </div>
     )
 }
