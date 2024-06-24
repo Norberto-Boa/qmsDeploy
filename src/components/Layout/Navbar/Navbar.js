@@ -18,8 +18,6 @@ import { useEffect, useState } from 'react';
 const navigation = [
     { name: 'Dashboard', href: '/', path: "/", current: true },
     { name: 'MyStore', href: '/create-store', path: "/create-store", current: false },
-    { name: 'Projects', href: '#', path: "", current: false },
-    { name: 'Calendar', href: '#', path: "", current: false },
 ]
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -29,12 +27,14 @@ function classNames(...classes) {
 
 const Navbar = () => {
     const [user, setUser] = useState();
+    const [shop, setShop] = useState();
     const location = useLocation();
 
     console.log(location.pathname)
 
     useEffect(() => {
-        setUser(localStorage.getItem("userid"))
+        setUser(localStorage.getItem("userid"));
+        setShop(localStorage.getItem("user_shop"))
     }, [])
     const navigate = useNavigate();
     const signingOut = () => {
@@ -79,11 +79,13 @@ const Navbar = () => {
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
                                         {user ? navigation.map((item) => (
+
                                             <a
                                                 key={item.name}
                                                 href={item.href}
                                                 className={classNames(
                                                     location.pathname == item.path ? 'border border-white text-white !font-bold' : 'text-white hover:bg-blue-std-heavy hover:text-zinc-50',
+                                                    !shop ? 'cursor-not-allowed' : null,
                                                     'rounded-md px-3 py-2 text-sm font-medium transition-all duration-150'
                                                 )}
                                                 aria-current={item.current ? 'page' : undefined}
@@ -97,7 +99,7 @@ const Navbar = () => {
                             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                 {user ? <button
                                     type="button"
-                                    className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                    className="relative rounded-full p-1 text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                     onClick={signingOut}
                                 >
                                     <span className="absolute -inset-1.5" />

@@ -88,7 +88,7 @@
     margin-left: 5px;
     font-size: 12px;
     display: inline-block;
-    background-color: #F9DB6D;
+    background-color: #ff681d;
     width: 24px;
     height: 24px;
     padding: 4px;
@@ -100,7 +100,7 @@
 }
 
 .yellowCapsule {
-    background: #F9DB6D;
+    background: #ff681d;
     border-radius: 4px;
     width: 100%;
     text-align: center;
@@ -108,7 +108,7 @@
 }
 
 .yellowCapsule2 {
-    background: #F9DB6D;
+    background: #ff681d;
     border-radius: 22px;
     width: 30%;
     margin-top: 2px;
@@ -117,7 +117,7 @@
 }
 
 .enterButton {
-    background: #41D3BD;
+    background: #102385;
     border-radius: 8px;
     padding: 4px 12px;
     width: 100%;
@@ -127,15 +127,16 @@
     font-weight: 700;
     text-transform: uppercase;
     transition: all .5s;
+    color: white;
 
 }
 
 .enterButton:hover {
-    background: #48efd6;
+    background: #1236e1;
 }
 
 .leaveButton {
-    background: #FF8898;
+    background: #f61533;
     border-radius: 8px;
     padding: 4px 12px;
     width: 100%;
@@ -145,10 +146,11 @@
     font-weight: 700;
     text-transform: uppercase;
     transition: all .5s;
+    color: white;
 }
 
 .leaveButton:hover {
-    background: #f96d80;
+    background: #fa3c55;
 }
 
 .cards {
@@ -172,9 +174,9 @@
 
 .leaveBtn {
     padding: 4px 12px;
-    background: #FF8898;
+    background: #f61533;
     border-radius: 8px;
-    border-color: #FF8898;
+    border-color: #f61533;
     font-weight: 700;
     border-style: solid;
     cursor: pointer;
@@ -182,5 +184,5 @@
 }
 
 .leaveBtn:hover {
-    background: #f96d80;
+    background: #fa3c55;
 }

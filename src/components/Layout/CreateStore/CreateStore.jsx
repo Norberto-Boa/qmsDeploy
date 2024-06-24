@@ -105,7 +105,7 @@ const CreateStore = () => {
     return (
         <>
             <Navbar />
-            <div className="container justify-between items-center flex mx-auto">
+            <div className="max-w-7xl px-2 container justify-between items-center flex mx-auto">
                 <div className={"w-1/2 mt-8"}>
                     <div className="space-y-6 max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
                         <h1 className="text-3xl font-bold mb-4">Edit Store Details</h1>
@@ -113,7 +113,7 @@ const CreateStore = () => {
                         <div className="flex items-center space-x-3">
                             <StoreMallDirectoryIcon className="text-3xl text-gray-700" />
                             <input
-                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-std-heavy"
                                 placeholder="Store Name"
                                 value={strName}
                                 onChange={(e) => setStrName(e.target.value)}
@@ -122,7 +122,7 @@ const CreateStore = () => {
 
                         <div className="w-full">
                             <select
-                                className="w-full border-2 border-gray-700 rounded-lg px-4 py-3 text-gray-700 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                className="w-full border-2 border-gray-700 rounded-lg px-4 py-3 text-gray-700 focus:ring focus:ring-blue-200 focus:border-blue-std-heavy"
                                 aria-label="Default select example"
                             >
                                 <option selected>Store type</option>
@@ -133,7 +133,7 @@ const CreateStore = () => {
                         <div className="flex items-center space-x-3">
                             <img src={img1} alt="counters" className="w-10 h-10" />
                             <input
-                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-std-heavy"
                                 placeholder="Number of counters"
                                 value={ctr}
                                 onChange={(e) => setCtr(e.target.value)}
@@ -144,7 +144,7 @@ const CreateStore = () => {
                         <div className="flex items-center space-x-3 gap-4">
                             <LocationOnIcon className="text-3xl text-gray-700" />
                             <button
-                                className="bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:ring focus:ring-blue-200"
+                                className="bg-blue-std-heavy text-white rounded-lg px-4 py-2 hover:bg-blue-std focus:ring focus:ring-blue-200"
                                 onClick={getLocation}
                             >
                                 Get coordinates
@@ -157,7 +157,7 @@ const CreateStore = () => {
                         <div className="flex items-center space-x-3">
                             <img src={img2} alt="counters" className="w-10 h-10" />
                             <input
-                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-std-heavy"
                                 placeholder="Billing Time"
                                 value={billTime}
                                 onChange={(e) => setBillTime(e.target.value)}
@@ -170,13 +170,13 @@ const CreateStore = () => {
                         <div className="flex items-center space-x-3">
                             <AccessTimeIcon className="text-3xl text-gray-700" />
                             <input
-                                className="w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                className="w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-std-heavy"
                                 placeholder="From"
                                 value={from}
                                 onChange={e => setFrom(e.target.value)}
                             />
                             <input
-                                className="w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                className="w-1/2 border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-std-heavy"
                                 placeholder="To"
                                 value={to}
                                 onChange={(e) => setTo(e.target.value)}
@@ -186,7 +186,7 @@ const CreateStore = () => {
                         <div className="flex items-start space-x-3">
                             <InfoIcon className="text-3xl text-gray-700 mt-2" />
                             <textarea
-                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-500"
+                                className="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:ring focus:ring-blue-200 focus:border-blue-std-heavy"
                                 placeholder="About"
                                 value={about}
                                 onChange={(e) => setAbout(e.target.value)}
@@ -197,14 +197,14 @@ const CreateStore = () => {
 
                     <div className="flex space-x-4 mt-4">
                         <button
-                            className={`flex-grow bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:ring focus:ring-blue-200`}
+                            className={`flex-grow bg-blue-std-heavy text-white rounded-lg px-4 py-2 hover:bg-blue-std focus:ring focus:ring-blue-200`}
                             onClick={() => funSub()}
                         >
                             {storeDetails.name ? "Update" : "Create"}
                         </button>
 
                         <button
-                            className={`flex-grow bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:ring focus:ring-blue-200`}
+                            className={`flex-grow bg-blue-std-heavy text-white rounded-lg px-4 py-2 hover:bg-blue-std focus:ring focus:ring-blue-200`}
                             onClick={() => navigate("/view-queue/id")}
                         >
                             View queue
@@ -212,7 +212,7 @@ const CreateStore = () => {
                     </div>
 
                     <button
-                        className={`w-full mt-2 bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:ring focus:ring-blue-200`}
+                        className={`w-full mt-2 bg-blue-std-heavy text-white rounded-lg px-4 py-2 hover:bg-blue-std focus:ring focus:ring-blue-200`}
                         onClick={() => navigate("/chart")}
                     >
                         View Store Analytics
@@ -240,7 +240,7 @@ const CreateStore = () => {
 
                         <div className="grid grid-cols-2 gap-2 justify-start items-center justify-items-center">
                             <div>
-                                <img src={img1} alt="counters" className={homeStyles.icons} /><div className={"ml-1.25 text-xs inline-block bg-[#F9DB6D] w-6 h-6 p-1 rounded-full text-center font-semibold relative -top-2.5"}>{ctr ? ctr : "0"}</div>
+                                <img src={img1} alt="counters" className={homeStyles.icons} /><div className={"ml-1.25 text-xs inline-block bg-[#ff681d] w-6 h-6 p-1 rounded-full text-center font-semibold relative -top-2.5"}>{ctr ? ctr : "0"}</div>
                                 <div style={{ textAlign: "center", width: "100%" }}>Counters</div>
                             </div>
 
@@ -256,7 +256,7 @@ const CreateStore = () => {
 
                             <div>
                                 <img src={img2} alt="counters" className="w-9 h-9 ml-2.5" />
-                                <div className={"ml-1.25 text-xs inline-block bg-[#F9DB6D] w-6 h-6 p-1 rounded-full text-center font-semibold relative -top-2.5"}>X</div>
+                                <div className={"ml-1.25 text-xs inline-block bg-[#ff681d] w-6 h-6 p-1 rounded-full text-center font-semibold relative -top-2.5"}>X</div>
                                 <div style={{ textAlign: "center", width: "100%" }}>Customers</div>
                             </div>
 
@@ -278,15 +278,15 @@ const CreateStore = () => {
                         </div>
 
                         <div>
-                            <h2 className='text-xl text-blue-600 font-bold'>About us</h2>
+                            <h2 className='text-xl text-blue-std-heavy font-bold'>About us</h2>
                             <p className='text-base text-zinc-500'>{about ? about : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur neque, eligendi eum quod non aliquid. Voluptatem consequatur quia dolores sunt?"}</p>
                         </div>
 
-                        <button className="bg-[#FF8898] rounded-lg py-1 px-3 w-full text-center mt-2 text-base font-bold uppercase transition-all duration-500 hover:bg-[#fa6f82]"                        >
+                        <button className="bg-[#f61533] text-white rounded-lg py-1 px-3 w-full text-center mt-2 text-base font-bold uppercase transition-all duration-500 hover:bg-[#fa3c55]">
                             Close Store
                         </button>
                     </div>
-                    <button className="bg-[#41D3BD] rounded-lg py-1 px-3 w-full text-center mt-2 text-base font-bold uppercase transition-all duration-500 hover:bg-[#48efd6]"
+                    <button className="bg-blue-std-heavy text-white rounded-lg py-1 px-3 w-full text-center mt-2 text-base font-bold uppercase transition-all duration-500 hover:bg-blue-std"
                         style={{}}
                         onClick={() => navigate("/")}
                     >
