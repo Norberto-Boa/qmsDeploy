@@ -1,8 +1,8 @@
 {
-  "homepage": "https://saksham-tiwari.github.io/QueueManagement/",
+  "homepage": "https://Norberto-Boa.github.io",
   "name": "queue-management",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@ant-design/plots": "^1.2.1",
     "@emotion/react": "^11.9.0",
