@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import logo from '../../Assets/logo.png'
-import bg from '../../Assets/bg-1.webp';
-import Navbar from '../../Layout/Navbar/Navbar'
 import { useForm } from 'react-hook-form'
-import image from '../../Assets/pic.svg'
 import { useNavigate } from 'react-router-dom'
 import './Login.css'
 import AuthService from '../../../services/API'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setLoader, UnsetLoader } from '../../../redux/actions/LoaderActions'
 import { checkStore } from '../../../redux/actions/LayoutAction'
 import { AuthBg } from '../auth-bg/Auth-bg';
@@ -17,10 +14,12 @@ const Login = () => {
     });
 
     const [authError, setAuthError] = useState(null);
+    const [loader, setOwnLoader] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const onSubmit = (data, e) => {
         dispatch(setLoader())
+        setOwnLoader(true);
         e.preventDefault();
         let obj = {
             "email": data.email,
@@ -29,7 +28,8 @@ const Login = () => {
         }
         AuthService.Login(obj)
             .then((res) => {
-                dispatch(UnsetLoader())
+                dispatch(UnsetLoader());
+                setOwnLoader(false);
 
                 if (res) {
                     localStorage.setItem("access", res.data.access_token);
@@ -49,6 +49,7 @@ const Login = () => {
                 }
             }).catch((e) => {
                 dispatch(UnsetLoader())
+                setOwnLoader(false);
                 setAuthError(e.response.data.message)
             })
     }
@@ -164,9 +165,10 @@ const Login = () => {
                         <div>
                             <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md bg-blue-std px-3 py-1.5 text-sm font-semibold leading-6 transition-all duration-300 text-white shadow-sm hover:bg-blue-std-heavy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className={`flex w-full justify-center disabled:opacity-70 rounded-md bg-blue-std px-3 py-1.5 text-sm font-semibold leading-6 transition-all duration-300 text-white shadow-sm hover:bg-blue-std-heavy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
+                                disabled={loader}
                             >
-                                Sign in
+                                {loader ? "Loading..." : "Sign in"}
                             </button>
 
                             <p className='mt-2 text-red-400 text-center capitalize font-medium'>{authError}</p>

@@ -9,6 +9,9 @@ module.exports = {
         'blue-std': '#1236e1',
         'blue-std-heavy': '#102385'
       },
+      backgroundImage: {
+        'navbar-bg': "url('https://www.standardbank.co.mz/bundles/mzbusinessbase/images/topbar.png')"
+      }
     },
   },
   plugins: [],

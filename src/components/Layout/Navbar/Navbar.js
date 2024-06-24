@@ -1,6 +1,6 @@
 import React from 'react'
-import logo from '../../Assets/logo1.svg'
 import './Navbar.css';
+import logo from '../../Assets/logo.png';
 import { Bars3Icon, BellIcon, XMarkIcon, ArrowLeftEndOnRectangleIcon } from '@heroicons/react/24/outline'
 import {
     Disclosure,
@@ -16,8 +16,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const navigation = [
-    { name: 'Dashboard', href: '/QueueManagement/', path: "/", current: true },
-    { name: 'MyStore', href: '/QueueManagement/create-store', path: "/create-store", current: false },
+    { name: 'Dashboard', href: '/', path: "/", current: true },
+    { name: 'MyStore', href: '/create-store', path: "/create-store", current: false },
     { name: 'Projects', href: '#', path: "", current: false },
     { name: 'Calendar', href: '#', path: "", current: false },
 ]
@@ -49,7 +49,7 @@ const Navbar = () => {
         navigate("/");
     }
     return (
-        <Disclosure as="nav" className="bg-gray-200">
+        <Disclosure as="nav" className="bg-navbar-bg bg-no-repeat bg-cover">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -68,10 +68,10 @@ const Navbar = () => {
                                     </DisclosureButton>
                                 </div> : null
                             }
-                            <div className={`flex flex-1 items-center ${user ? "justify-center" : "justify-start"} sm:items-stretch sm:justify-start`}>
+                            <div className={`flex flex-1 items-center ${user ? "justify-center" : "justify-start"} sm:items-center sm:justify-start`}>
                                 <div className="flex flex-shrink-0 items-center cursor-pointer" onClick={logoClick}>
                                     <img
-                                        className="h-8 w-auto"
+                                        className="h-14 w-auto"
                                         src={logo}
                                         alt="Your Company"
                                     />
@@ -83,8 +83,8 @@ const Navbar = () => {
                                                 key={item.name}
                                                 href={item.href}
                                                 className={classNames(
-                                                    location.pathname == item.path ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                    'rounded-md px-3 py-2 text-sm font-medium'
+                                                    location.pathname == item.path ? 'border border-white text-white !font-bold' : 'text-white hover:bg-blue-std-heavy hover:text-zinc-50',
+                                                    'rounded-md px-3 py-2 text-sm font-medium transition-all duration-150'
                                                 )}
                                                 aria-current={item.current ? 'page' : undefined}
                                             >
