@@ -1,0 +1,19 @@
+{
+  "translation": {
+    "signin_title": "Sign in to your account",
+    "customer": "Customer",
+    "store": "Store",
+    "email_label": "Email address",
+    "password_label": "Password",
+    "forgot_password": "Forgot password?",
+    "signin_button": "Sign in",
+    "not_a_member": "Not a member?",
+    "create_account": "Create an Account",
+    "loading": "Loading...",
+    "dashboard": "Dashboard",
+    "mystore": "MyStore",
+    "log_out": "Log Out",
+    "company_name": "Your Company",
+    "visit_website": "www.anytechsols.com"
+  }
+}

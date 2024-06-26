@@ -15,40 +15,41 @@ import Loader from './components/Layout/Loaders/GifLoader';
 import { useSelector } from 'react-redux';
 import Error404 from './components/Layout/Error404/Error404';
 import DemoLine from './components/Layout/Charts/Chart';
+import { useTranslation } from 'react-i18next';
 
 function App() {
-  let loader = useSelector(state=>state.LoaderReducer)
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[loader])
-  return ( <>
-        {loader[0]?<Loader/>:<></>}
+  let loader = useSelector(state => state.LoaderReducer)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [loader])
+  return (<>
+    {loader[0] ? <Loader /> : <></>}
 
-       <Routes>
-       
-         {/* Auth Routes */}
+    <Routes>
 
-        <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/signup" element={<SignUp />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/otp" element={<Otp />} />
-        <Route exact path="/forgot" element={<Forgot />} />
-        <Route exact path="/reset" element={<ResetPass />} />
-        <Route exact path="/detail" element={<Details />} />
+      {/* Auth Routes */}
 
-        {/* Layout Routes */}
-          <Route exact path="/store/:id" element={<StorePage/>}/>
-        <Route exact path="/create-store" element={<CreateStore/>}/>
-        <Route exact path="/view-queue/id" element={<ViewQueue/>}/>
-        <Route exact path="/qrcode" element={<QrScanner />} />
-        <Route exact path="/chart" element={<DemoLine />} />
+      <Route exact path="/" element={<HomePage />} />
+      <Route exact path="/signup" element={<SignUp />} />
+      <Route exact path="/login" element={<Login />} />
+      <Route exact path="/otp" element={<Otp />} />
+      <Route exact path="/forgot" element={<Forgot />} />
+      <Route exact path="/reset" element={<ResetPass />} />
+      <Route exact path="/detail" element={<Details />} />
+
+      {/* Layout Routes */}
+      <Route exact path="/store/:id" element={<StorePage />} />
+      <Route exact path="/create-store" element={<CreateStore />} />
+      <Route exact path="/view-queue/id" element={<ViewQueue />} />
+      <Route exact path="/qrcode" element={<QrScanner />} />
+      <Route exact path="/chart" element={<DemoLine />} />
 
 
-        <Route path="/404" element={<Error404/>} />
-        <Route path="*" element={<Error404 />} />
+      <Route path="/404" element={<Error404 />} />
+      <Route path="*" element={<Error404 />} />
 
-      </Routes>
-    </>
+    </Routes>
+  </>
   );
 }
 

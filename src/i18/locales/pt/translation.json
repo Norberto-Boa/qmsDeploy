@@ -1,0 +1,19 @@
+{
+  "translation": {
+    "signin_title": "Faça login na sua conta",
+    "customer": "Cliente",
+    "store": "Loja",
+    "email_label": "Endereço de email",
+    "password_label": "Senha",
+    "forgot_password": "Esqueceu a senha?",
+    "signin_button": "Entrar",
+    "not_a_member": "Ainda não é membro?",
+    "create_account": "Criar uma conta",
+    "loading": "Carregando...",
+    "dashboard": "Painel de Controle",
+    "mystore": "Minha Loja",
+    "log_out": "Sair",
+    "company_name": "Sua Empresa",
+    "visit_website": "www.anytechsols.com"
+  }
+}
