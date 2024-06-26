@@ -14,6 +14,20 @@
     "mystore": "MyStore",
     "log_out": "Log Out",
     "company_name": "Your Company",
-    "visit_website": "www.anytechsols.com"
+    "visit_website": "www.anytechsols.com",
+    "nearby_stores": "Nearby Stores",
+    "search": "Search",
+    "no_results_found": "No results found.",
+    "show_nearby": "Show Nearby",
+    "queues_joined": "Queues Joined",
+    "join_some_queues": "Join some queues!!!",
+    "counters": "Counters",
+    "customers": "Customers",
+    "address": "Address of the store here...",
+    "waiting_time": "Waiting Time",
+    "mins": "mins",
+    "secs": "secs",
+    "leave_queue": "Leave Queue",
+    "join_queue": "Join Queue"
   }
 }

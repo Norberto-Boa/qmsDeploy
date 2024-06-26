@@ -14,6 +14,20 @@
     "mystore": "Minha Loja",
     "log_out": "Sair",
     "company_name": "Sua Empresa",
-    "visit_website": "www.anytechsols.com"
+    "visit_website": "www.anytechsols.com",
+    "nearby_stores": "Lojas Próximas",
+    "search": "Buscar",
+    "no_results_found": "Nenhum resultado encontrado.",
+    "show_nearby": "Mostrar Próximas",
+    "queues_joined": "Filas Participadas",
+    "join_some_queues": "Participe de algumas filas!!!",
+    "counters": "Balcões",
+    "customers": "Clientes",
+    "address": "Endereço da loja aqui...",
+    "waiting_time": "Tempo de Espera",
+    "mins": "min",
+    "secs": "seg",
+    "leave_queue": "Sair da Fila",
+    "join_queue": "Entrar na Fila"
   }
 }

@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import styles from "../Homepage.module.css"
-import img1 from "../../../Assets/img1.png"
-import img2 from "../../../Assets/img2.png"
+import React, { useEffect, useState } from 'react';
+import styles from "../Homepage.module.css";
+import img1 from "../../../Assets/img1.png";
+import img2 from "../../../Assets/img2.png";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TimerIcon from '@mui/icons-material/Timer';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Card = (props) => {
+  const { t } = useTranslation();
   let navigate = useNavigate();
   useEffect(() => {
     let user = localStorage.getItem("userid")
@@ -61,38 +63,42 @@ const Card = (props) => {
       setTimer(timer => timer - 1)
     }, 1000)
   }, [])
+
   return (
     <div className={styles.card}>
       <h1 className={styles.head}>{props.n.name}</h1>
       <div className='flex w-full justify-center gap-8 mt-2'>
         <div className='flex flex-col justify-center items-center'>
-          <img src={img1} alt="counters" className={styles.icons} /><div className={styles.roundNo}>{props.n.counter}</div>
-          <div style={{ textAlign: "center", width: "100%" }}>Counters</div>
+          <img src={img1} alt="counters" className={styles.icons} />
+          <div className={styles.roundNo}>{props.n.counter}</div>
+          <div style={{ textAlign: "center", width: "100%" }}>{t('counters')}</div>
         </div>
         <div className='flex flex-col justify-center items-center'>
-          <img src={img2} alt="counters" className={styles.icons} /><div className={styles.roundNo}>{props.n.queue.length}</div>
-          <div style={{ textAlign: "center", width: "100%" }}>Customers</div>
+          <img src={img2} alt="counters" className={styles.icons} />
+          <div className={styles.roundNo}>{props.n.queue.length}</div>
+          <div style={{ textAlign: "center", width: "100%" }}>{t('customers')}</div>
         </div>
       </div>
       <div className='flex gap-2 items-center justify-center mb-2'>
-        <LocationOnIcon fontSize='small' /> Address of the store here...
+        <LocationOnIcon fontSize='small' /> {t('address')}
       </div>
       <div className='flex gap-2 items-center justify-center mb-2'>
-        <TimerIcon fontSize='small' /> Waiting Time
+        <TimerIcon fontSize='small' /> {t('waiting_time')}
       </div>
       <div className={styles.yellowCapsule}>
-        {/* {arr[0]} */}
-        {timer > 0 ? <p>
-          {Math.floor(timer / 60)} mins:{Math.floor(timer % 60)} secs
-        </p> : <p>
-          0 mins
-        </p>}
+        {timer > 0 ? (
+          <p>
+            {Math.floor(timer / 60)} {t('mins')}:{Math.floor(timer % 60)} {t('secs')}
+          </p>
+        ) : (
+          <p>0 {t('mins')}</p>
+        )}
       </div>
       <button className={inQueue ? styles.leaveButton : styles.enterButton} onClick={() => open(props.n._id)}>
-        {inQueue ? "Leave Queue" : "Join Queue"}
+        {inQueue ? t('leave_queue') : t('join_queue')}
       </button>
     </div>
-  )
+  );
 }
 
-export default Card
+export default Card;
