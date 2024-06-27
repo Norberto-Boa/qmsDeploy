@@ -28,6 +28,14 @@
     "mins": "min",
     "secs": "seg",
     "leave_queue": "Sair da Fila",
-    "join_queue": "Entrar na Fila"
+    "join_queue": "Entrar na Fila",
+    "store_name": "Nome da Loja",
+    "min": "min",
+    "billing_time": "Tempo de faturamento",
+    "open": "Aberto",
+    "counter_allocated": "Balcão atribuído",
+    "address_placeholder": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur feugiat ex sed gravida. Proin eu orci varius, dictum erat ac, ullamcorper arcu. Aliquam erat volutpat. Nam sagittis leo",
+    "update_store": "Atualizar Loja",
+    "ensure_near_store": "Certifique-se de estar fisicamente próximo à loja."
   }
 }

@@ -24,10 +24,18 @@
     "counters": "Counters",
     "customers": "Customers",
     "address": "Address of the store here...",
-    "waiting_time": "Waiting Time",
     "mins": "mins",
     "secs": "secs",
     "leave_queue": "Leave Queue",
-    "join_queue": "Join Queue"
+    "join_queue": "Join Queue",
+    "store_name": "Store Name",
+    "min": "min",
+    "waiting_time": "Waiting time",
+    "billing_time": "Billing time",
+    "open": "Open",
+    "counter_allocated": "Counter allocated",
+    "address_placeholder": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur feugiat ex sed gravida. Proin eu orci varius, dictum erat ac, ullamcorper arcu. Aliquam erat volutpat. Nam sagittis leo",
+    "update_store": "Update Store",
+    "ensure_near_store": "Ensure to be physically near the store."
   }
 }
