@@ -9,16 +9,40 @@ import { setLoader, UnsetLoader } from '../../../redux/actions/LoaderActions';
 import { checkStore } from '../../../redux/actions/LayoutAction';
 import { AuthBg } from '../auth-bg/Auth-bg';
 import { useTranslation } from 'react-i18next';
+import { changeLocale } from '../../../redux/actions/LocaleActions';
+
+const LanguageSelector = () => {
+    const { i18n } = useTranslation();
+    const dispatch = useDispatch();
+
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+        dispatch(changeLocale(lng));
+    };
+
+    return (
+        <div className="flex justify-center items-center mb-4">
+            <button className="px-2 py-1 rounded bg-white text-gray-800" onClick={() => changeLanguage('en')}>
+                EN
+            </button>
+            <button className="px-2 py-1 rounded bg-white text-gray-800 ml-2" onClick={() => changeLanguage('pt')}>
+                PT
+            </button>
+            {/* Add more buttons for other languages as needed */}
+        </div>
+    );
+};
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onTouched"
     });
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [authError, setAuthError] = useState(null);
     const [loader, setOwnLoader] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const onSubmit = (data, e) => {
         dispatch(setLoader())
         setOwnLoader(true);
@@ -54,17 +78,21 @@ const Login = () => {
                 setOwnLoader(false);
                 setAuthError(e.response.data.message)
             })
-    }
+    };
+
     const handleForgotPasswordClick = () => {
         navigate("/forgot");
-    }
+    };
+
     const handleSignUpClick = () => {
         navigate("/signup");
-    }
-    const [toggle, setToggle] = useState(false);
+    };
+
+
     return (
         <div className="relative">
             <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-6 lg:px-8 z-10">
+                <LanguageSelector /> {/* Language selector added here */}
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
                         className="mx-auto h-20 w-auto"
